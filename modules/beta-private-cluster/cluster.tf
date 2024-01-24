@@ -125,6 +125,11 @@ resource "google_container_cluster" "primary" {
         disk_size = lookup(var.cluster_autoscaling, "disk_size", 100)
         disk_type = lookup(var.cluster_autoscaling, "disk_type", "pd-standard")
 
+        shielded_instance_config {
+          enable_secure_boot          = lookup(var.cluster_autoscaling, "enable_secure_boot", false)
+          enable_integrity_monitoring = lookup(var.cluster_autoscaling, "enable_integrity_monitoring", true)
+        }
+
         min_cpu_platform = lookup(var.node_pools[0], "min_cpu_platform", "")
       }
     }
