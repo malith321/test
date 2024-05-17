@@ -250,6 +250,7 @@ variable "cluster_autoscaling" {
     auto_upgrade        = bool
     disk_size           = optional(number)
     disk_type           = optional(string)
+    image_type          = optional(string)
   })
   default = {
     enabled             = false
@@ -263,6 +264,7 @@ variable "cluster_autoscaling" {
     auto_upgrade        = true
     disk_size           = 100
     disk_type           = "pd-standard"
+    image_type          = "COS_CONTAINERD"
   }
   description = "Cluster autoscaling configuration. See [more details](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#clusterautoscaling)"
 }
